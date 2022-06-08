@@ -8,9 +8,21 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <header class="wrapper">
         <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}"
                     style="height:100px; width:100px" /></a></h1>
+        <nav>
+            <ul>
+                <li>
+                    <form action="/accounts/logout/" class="logout-link" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
         {% block content %}
         {% endblock %}
     </div>
