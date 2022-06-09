@@ -9,6 +9,7 @@
             <a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</a>
             <p>{{article.snippet}}</p>
             <p>{{article.date}}</p>
+            <p class="author">added by {{article.author.username}}</p>
         </h2>
     </div>
 

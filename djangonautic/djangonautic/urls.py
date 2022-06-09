@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, re_path
 from .import views
 from django.conf.urls import include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -8,11 +8,11 @@ from django.conf import settings
 from articles import views as article_views
 
 urlpatterns = [
-    path('', article_views.article_list, name="home"),
-    path('articles/', include('articles.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
-    path('about/', views.about),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^articles/', include('articles.urls')),
+    re_path(r'^accounts/', include('accounts.urls')),
+    re_path(r'^about/$', views.about),
+    re_path(r'^$', article_views.article_list, name="home"),
 
     # path(r'^admin/', admin.site.urls),
     # path(r'^about/$', views.about),
