@@ -9,16 +9,21 @@
 
 <body>
     <header class="wrapper">
-        <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}"
-                    style="height:100px; width:100px" /></a></h1>
+        <h1><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" style="height:100px; width:100px" /></a></h1>
         <nav>
             <ul>
+                {% if user.is_authenticated %}
                 <li>
                     <form action="/accounts/logout/" class="logout-link" method="post">
                         {% csrf_token %}
                         <button type="submit">Logout</button>
                     </form>
                 </li>
+                <li><a href="/articles/create">New Article</a></li>
+                {% else %}
+                <li><a href="accounts/login">Login</a></li>
+                <li><a href="accounts/signup">Signup</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

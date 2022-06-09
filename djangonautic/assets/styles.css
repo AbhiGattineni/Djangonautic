@@ -24,3 +24,12 @@ a:visited {
     color: #fff;
     text-decoration: none;
 }
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+div.wrapper h1 {
+    text-align: center;
+}
